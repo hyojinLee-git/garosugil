@@ -22,7 +22,9 @@ const contents=[
 ]
 
 const DataVisualization = () => {
-    
+    const onChangeTab=(e)=>{
+        console.log(e.target)
+    }
     return (
         <div>
             
@@ -33,12 +35,13 @@ const DataVisualization = () => {
                 가로수는 무엇일까?
                 </h1>
             </Header>
-            <div style={{paddingTop:"10%", paddingLeft:"10%"}}>
+            <div style={{paddingLeft:"10%"}}>
+                <div style={{whiteSpace:"nowrap", margin:"10% 0"}}>
                 {
-                    contents.map((content)=><Button>{content.tab}</Button>)
+                    contents.map((content)=><Button onClick={onChangeTab}>{content.tab}</Button>)
                 }
-                
-                <img src={contents[0].image} alt="now" style={{display:"block"}}/>
+                </div>
+                <img src={contents[0].image} alt="now" style={{display:"block",width:"100%"}}/>
             </div>
         </div>
     );

@@ -7,14 +7,12 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Link to="/caretreeintroduce">introduce</Link>
-        <br />
-        <Link to="/datavisualization">datavisualization</Link>
         <Routes>
           <Route path="/caretreeintroduce" element={<CaretreeIntroduce />} />
           <Route path="/datavisualization" element={<DataVisualization />} />
         </Routes>
       </Router>
+      hi
       {/* <CaretreeIntroduce />
       <DataVisualization /> */}
     </div>
