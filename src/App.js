@@ -7,8 +7,8 @@ function App() {
   return (
     <div className="App">
       <Router>
+        <Link to="/caretreeintroduce">introduce</Link>
         <Routes>
-          <Link to="/caretreeintroduce">introduce</Link>
           <Route path="/caretreeintroduce" element={<CaretreeIntroduce />} />
           <Route path="/datavisualization" element={<DataVisualization />} />
         </Routes>
