@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+
 import { Button, Header } from '../style/style';
 
 const contents=[
@@ -22,11 +22,7 @@ const contents=[
 ]
 
 const DataVisualization = () => {
-    const [nowTab,setNowTab]=useState(0)
-    const onChangeTab=(e)=>{
-        console.log(e)
-
-    }
+    
     return (
         <div>
             
@@ -39,10 +35,10 @@ const DataVisualization = () => {
             </Header>
             <div style={{paddingTop:"10%", paddingLeft:"10%"}}>
                 {
-                    contents.map((content)=><Button onClick={onChangeTab}>{content.tab}</Button>)
+                    contents.map((content)=><Button>{content.tab}</Button>)
                 }
                 
-                <img src={contents[nowTab].image} alt="now" style={{display:"block"}}/>
+                <img src={contents[0].image} alt="now" style={{display:"block"}}/>
             </div>
         </div>
     );
