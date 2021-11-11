@@ -3,18 +3,22 @@ import { Button, Header } from '../style/style';
 
 const contents=[
     {
+        id:0,
         tab:'강남구',
         image:"images/가로수 수량 1위 구의 상위 종류.png"
     },
     {
+        id:1,
         tab:'서초구',
         image:""
     },
     {
+        id:2,
         tab:'송파구',
         image:""
     },
     {
+        id:3,
         tab:'강동구',
         image:""
     },
@@ -38,7 +42,7 @@ const DataVisualization = () => {
             <div style={{paddingLeft:"10%"}}>
                 <div style={{whiteSpace:"nowrap", margin:"10% 0"}}>
                 {
-                    contents.map((content)=><Button onClick={onChangeTab}>{content.tab}</Button>)
+                    contents.map((content)=><Button key={content.id} onClick={onChangeTab}>{content.tab}</Button>)
                 }
                 </div>
                 <img src={contents[0].image} alt="now" style={{display:"block",width:"100%"}}/>
