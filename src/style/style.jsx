@@ -24,3 +24,13 @@ export const Section=styled.section`
         color: rgba(0,0,0,0.6);
     }
 `
+
+export const Button=styled.button`
+    width: 80px;
+    height: 30px;
+    border: 1px solid #C4C4C4;
+    background-color: #F0F2F5;
+    border-radius: 20px;
+    margin-left: 20px;
+    cursor: pointer;
+`
