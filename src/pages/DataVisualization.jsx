@@ -1,4 +1,5 @@
 
+import { useState } from 'react';
 import { Button, Header } from '../style/style';
 
 const contents=[
@@ -10,34 +11,38 @@ const contents=[
     {
         id:1,
         tab:'서초구',
-        image:""
+        image:"images/가로수 수량 5위 구의 상위 종류.png"
     },
     {
         id:2,
         tab:'송파구',
-        image:""
+        image:"images/가로수 수량 2위 구의 상위 종류.png"
     },
     {
         id:3,
         tab:'강동구',
-        image:""
+        image:"images/가로수 수량 4위 구의 상위 종류.png"
     },
 
 ]
 
 const DataVisualization = () => {
+    const [nowTab,setNowTab]=useState(0)
+
     const onChangeTab=(e)=>{
-        console.log(e.target)
+        const result=contents.filter((content)=>content.tab===e.target.innerText)
+        setNowTab(result[0].id)
     }
     return (
         <div>
             
             {/* nested router */}
-            <Header>
-                <h1>
+            <Header color="#B5E9CA">
+                <h1 style={{color:"black"}}>
                 우리 동네에 가장 많은 
                 가로수는 무엇일까?
                 </h1>
+                <img src="icons/donut-large.png" alt="donut"/>
             </Header>
             <div style={{paddingLeft:"10%"}}>
                 <div style={{whiteSpace:"nowrap", margin:"10% 0"}}>
@@ -45,8 +50,9 @@ const DataVisualization = () => {
                     contents.map((content)=><Button key={content.id} onClick={onChangeTab}>{content.tab}</Button>)
                 }
                 </div>
-                <img src={contents[0].image} alt="now" style={{display:"block",width:"100%"}}/>
+                
             </div>
+            <img src={contents[nowTab].image} alt="now" style={{display:"block",width:"100%"}}/>
         </div>
     );
 };
