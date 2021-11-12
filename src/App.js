@@ -9,6 +9,8 @@ import PineTree from './pages/PineTree';
 import PoplarTree from './pages/PoplarTree';
 import Zelkova from './pages/Zelkova';
 import Doughnut from './pages/Doughnut';
+import Chart from './pages/Chart';
+import LineGraph from './pages/LineGraph';
 
 function App() {
   return (
@@ -32,7 +34,9 @@ function App() {
         <br /> */}
         <Routes>
           <Route path="/caretreeintroduce" element={<CaretreeIntroduce />} />
-          <Route path="/datavisualization" element={<DataVisualization />} />
+
+          <Route path="/datavisualization/chart" element={<Chart />} />
+          <Route path="/datavisualization/linegraph" element={<LineGraph />} />
           {/* 살구나무 */}
           <Route path="/apricottree" element={<ApricotTree />} />
           {/* 은행나무 */}
@@ -50,6 +54,7 @@ function App() {
             path="/datavisualization/doughnut"
             element={<Doughnut />}
           />
+          <Route path="/datavisualization" element={<DataVisualization />} />
         </Routes>
       </Router>
     </div>

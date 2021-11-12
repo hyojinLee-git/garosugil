@@ -5,6 +5,14 @@ export const Header=styled.header`
     height: 240px;
     position: relative;
     background:${props=>props.color ||"linear-gradient(180deg, #3BA59C 0%, #45B19A 49.83%, #4CB999 82.64%, #51BD97 100%) "};
+    &>#back{
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        top: 10px;
+        left: 10px;
+        cursor: pointer;
+    }
     &>h1{
         color:black;
         margin: 0;
