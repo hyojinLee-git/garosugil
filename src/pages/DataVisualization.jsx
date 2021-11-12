@@ -1,59 +1,76 @@
 
-import { useState } from 'react';
-import { Button, Header } from '../style/style';
+import React , { useState,useCallback } from 'react';
+import { Link ,Route ,Routes,Outlet} from 'react-router-dom';
+import { StyledLi, Subtitle } from '../style/style';
 
 const contents=[
     {
-        id:0,
-        tab:'강남구',
-        image:"images/가로수 수량 1위 구의 상위 종류.png"
-    },
-    {
         id:1,
-        tab:'서초구',
-        image:"images/가로수 수량 5위 구의 상위 종류.png"
+        logoImg:"icons/donut-large.png",
+        content:"우리 동네에 가장 많은 가로수는 무엇일까?",
+        color:"rgba(109,213,151,0.5)",
+        link:"/datavisualization/doughnut"
     },
     {
         id:2,
-        tab:'송파구',
-        image:"images/가로수 수량 2위 구의 상위 종류.png"
+        logoImg:"icons/sort.png",
+        content:"가로수가 가장 많은 동네는 어디일까?",
+        color:"#F0F2F5",
+        link:""
     },
     {
         id:3,
-        tab:'강동구',
-        image:"images/가로수 수량 4위 구의 상위 종류.png"
+        logoImg:"icons/trending-up.png",
+        content:"가로수는 늘어났을까 줄었을까?",
+        color:"rgba(174,216,216,0.5)",
+        link:""
     },
+    {
+        id:4,
+        logoImg:"icons/sort-horizontal.png",
+        content:"어떤 가로수가 늘어나고 있을까?",
+        color:"#F0F2F5",
+        link:""
+    },
+    {
+        id:5,
+        logoImg:"icons/trending-up.png",
+        content:"가로수가 있는 길들은 늘어났을까?",
+        color:"#F0F2F5",
+        link:""
 
+    },
 ]
 
 const DataVisualization = () => {
-    const [nowTab,setNowTab]=useState(0)
-
-    const onChangeTab=(e)=>{
-        const result=contents.filter((content)=>content.tab===e.target.innerText)
-        setNowTab(result[0].id)
-    }
+    
     return (
-        <div>
-            
-            {/* nested router */}
-            <Header color="#B5E9CA">
-                <h1 style={{color:"black"}}>
-                우리 동네에 가장 많은 
-                가로수는 무엇일까?
-                </h1>
-                <img src="icons/donut-large.png" alt="donut"/>
-            </Header>
-            <div style={{paddingLeft:"10%"}}>
-                <div style={{whiteSpace:"nowrap", margin:"10% 0"}}>
-                {
-                    contents.map((content)=><Button key={content.id} onClick={onChangeTab}>{content.tab}</Button>)
-                }
-                </div>
-                
+        <>
+            <h1>가로수 데이터</h1>
+            <div style={{display:"flex",flexDirection:"column",alignItems:"center"}}>
+            <Subtitle>
+                데이터를 통해 보는 우리동네 가로수
+                <img src="trees/tree.png" alt="tree"/>;
+            </Subtitle>
             </div>
-            <img src={contents[nowTab].image} alt="now" style={{display:"block",width:"100%"}}/>
-        </div>
+            <div style={{marginTop:20,height:30, fontSize:15,fontWeight:"bold",paddingLeft:15}}>가로수 데이터 컨텐츠</div>
+            <ul style={{padding:0, display:"flex", flexDirection:"column", alignItems:"center", marginTop:0}}>
+                {
+                    contents.map(content=>
+                    <StyledLi key={content.id} color={content.color}>
+                        <a href={content.link}>
+                            <div className="logo">
+                                <img src={content.logoImg} alt={content.content}/>
+                            </div>
+                            <div style={{fontSize:14}}>
+                            {content.content}
+                            </div>
+                        </a>
+                    </StyledLi>)
+                }
+            </ul>
+            
+        </>
     );
 };
 
