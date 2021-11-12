@@ -16,25 +16,8 @@ function App() {
   return (
     <div className="App">
       <Router>
-        {/* <Link to="/apricottree">apricottree</Link>
-        <br />
-        <Link to="/ginkgo">ginkgo</Link>
-        <br />
-        <Link to="/kingcherry">kingcherry</Link>
-        <br />
-        <Link to="/pinetree">pinetree</Link>
-        <br />
-        <Link to="/poplartree">poplartree</Link>
-        <br />
-        <Link to="/zelkova">zelkova</Link>
-        <br />
-        <Link to="/datavisualization/doughnut">doughnut</Link>
-        <br />
-        <Link to="/datavisualization">datavisualization</Link>
-        <br /> */}
         <Routes>
           <Route path="/caretreeintroduce" element={<CaretreeIntroduce />} />
-
           <Route path="/datavisualization/chart" element={<Chart />} />
           <Route path="/datavisualization/linegraph" element={<LineGraph />} />
           {/* 살구나무 */}
