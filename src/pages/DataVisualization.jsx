@@ -32,14 +32,6 @@ const contents=[
         color:"#F0F2F5",
         link:""
     },
-    {
-        id:5,
-        logoImg:"/icons/trending-up.png",
-        content:"가로수가 있는 길들은 늘어났을까?",
-        color:"#F0F2F5",
-        link:""
-
-    },
 ]
 
 const DataVisualization = () => {
@@ -62,9 +54,7 @@ const DataVisualization = () => {
                             <div className="logo">
                                 <img src={content.logoImg} alt={content.content}/>
                             </div>
-                            <div style={{fontSize:14}}>
-                            {content.content}
-                            </div>
+                            <div style={{fontSize:14}}>{content.content}</div>
                         </Link>
                     </StyledLi>)
                 }

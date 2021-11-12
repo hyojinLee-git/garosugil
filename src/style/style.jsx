@@ -68,7 +68,7 @@ export const StyledLi=styled.li`
         color:black;
         display: flex;
         align-items: center;
-        
+        width: 100%;
     }
     & .logo{
         height: 60px;
