@@ -36,7 +36,15 @@ export const Header=styled.header`
 
 export const Section=styled.section`
     padding:10%;
-    &>.sub-title{
+    &>p{
+        margin-bottom: 15%;
+    }
+    & h2{
+        margin-bottom: 0;
+        font-weight: bold;
+    }
+    & .sub-title{
+        margin-top:0;
         color: rgba(0,0,0,0.6);
     }
 `
