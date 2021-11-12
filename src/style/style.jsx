@@ -45,10 +45,11 @@ export const Button=styled.button`
     width: 80px;
     height: 30px;
     border: 1px solid #C4C4C4;
-    background-color: #F0F2F5;
+    background-color: ${props=>props.color||"#F0F2F5"};
     border-radius: 20px;
     margin-right: 20px;
     cursor: pointer;
+
 `
 
 export const StyledLi=styled.li`

@@ -1,7 +1,7 @@
 
 import React , { useState } from 'react';
 import { Button, Header } from '../style/style';
-
+import {useNavigate} from 'react-router-dom'
 const contents=[
     {
         id:0,
@@ -28,6 +28,7 @@ const contents=[
 
 const Doughnut = () => {
     const [nowTab,setNowTab]=useState(0)
+    const navigate=useNavigate();
 
     const onChangeTab=(e)=>{
         const result=contents.filter((content)=>content.tab===e.target.innerText)
@@ -36,7 +37,7 @@ const Doughnut = () => {
     return (
         <div>
             <Header color="#B5E9CA">
-                <img id="back" src="/icons/Backbutton.png" alt="back" />
+                <img id="back" src="/icons/Backbutton.png" alt="back" onClick={()=>navigate(-1)}/>
                 <h1 style={{color:"black"}}>
                 우리 동네에 가장 많은 
                 가로수는 무엇일까?
@@ -44,9 +45,9 @@ const Doughnut = () => {
                 <img src="/icons/donut-large.png" alt="donut"/>
             </Header>
             <div style={{paddingLeft:"10%"}}>
-                <div style={{whiteSpace:"nowrap", margin:"10% 0"}}>
+                <div style={{whiteSpace:"nowrap", margin:"10% 0",overflowX:"auto"}}>
                 {
-                    contents.map((content)=><Button key={content.id} onClick={onChangeTab}>{content.tab}</Button>)
+                    contents.map((content)=><Button color={nowTab===content.id? "#B5E9CA":null} key={content.id} onClick={onChangeTab}>{content.tab}</Button>)
                 }
                 </div>
                 

@@ -11,6 +11,7 @@ import Zelkova from './pages/Zelkova';
 import Doughnut from './pages/Doughnut';
 import Chart from './pages/Chart';
 import LineGraph from './pages/LineGraph';
+import './App.css';
 
 function App() {
   return (
