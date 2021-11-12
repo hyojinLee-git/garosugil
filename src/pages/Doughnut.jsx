@@ -1,5 +1,5 @@
 
-import React , { useState,useCallback } from 'react';
+import React , { useState } from 'react';
 import { Button, Header } from '../style/style';
 
 const contents=[
@@ -29,10 +29,10 @@ const contents=[
 const Doughnut = () => {
     const [nowTab,setNowTab]=useState(0)
 
-    const onChangeTab=useCallback((e)=>{
+    const onChangeTab=(e)=>{
         const result=contents.filter((content)=>content.tab===e.target.innerText)
         setNowTab(result[0].id)
-    },[nowTab])
+    }
     return (
         <div>
             <Header color="#B5E9CA">
