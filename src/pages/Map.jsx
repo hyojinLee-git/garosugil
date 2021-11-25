@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect} from 'react';
 import {RenderAfterNavermapsLoaded, NaverMap} from 'react-naver-maps'
 import axios from 'axios'
 
