@@ -47,23 +47,23 @@ const Map = () => {
         throw new Error(err.response)
       }
     }
-    const filterOpenData=()=>{
-      //console.log(treesTaken[0].tree_id)
-      // const result=openData.filter(d=>{
-      //   console.log(treesTaken[0].tree_id)
-      // })
-      let lst=[...openData]
-      for(let i=0;i<treesTaken.length;i++){
-        const result=lst.filter(d=>treesTaken[i].tree_id!==d.TRE_IDN)
-        lst=[...result]
-        //console.log(result)
-      }
-      //console.log(lst)
-      setOpenData(prev=>[...prev])
-      //console.log(openData)
-      // console.log(result)
-      // return result
-    }
+    // const filterOpenData=()=>{
+    //   //console.log(treesTaken[0].tree_id)
+    //   // const result=openData.filter(d=>{
+    //   //   console.log(treesTaken[0].tree_id)
+    //   // })
+    //   let lst=[...openData]
+    //   for(let i=0;i<treesTaken.length;i++){
+    //     const result=lst.filter(d=>treesTaken[i].tree_id!==d.TRE_IDN)
+    //     lst=[...result]
+    //     //console.log(result)
+    //   }
+    //   //console.log(lst)
+    //   setOpenData(prev=>[...prev])
+    //   //console.log(openData)
+    //   // console.log(result)
+    //   // return result
+    // }
     const filterChooseData=(choose)=>{
       const {lat,lng}=choose
       const result=openData.filter(d=>d.LAT===lat.toString() && d.LNG===lng.toString())
