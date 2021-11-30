@@ -14,6 +14,7 @@ import LineGraph from './pages/LineGraph';
 import './App.css';
 import Map from './pages/Map';
 import loadable from '@loadable/component';
+import Form from './pages/Form';
 
 const ApricotTree = loadable(() => import('./pages/ApricotTree'));
 
@@ -22,6 +23,7 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
+          <Route path="/form" element={<Form />} />
           <Route path="/map" element={<Map />} />
           <Route path="/caretreeintroduce" element={<CaretreeIntroduce />} />
           <Route path="/datavisualization/chart" element={<Chart />} />

@@ -1,48 +1,148 @@
-import React, { useEffect} from 'react';
-import {RenderAfterNavermapsLoaded, NaverMap} from 'react-naver-maps'
+import React, { useEffect, useState} from 'react';
+import { GoogleMap, LoadScript,Marker } from '@react-google-maps/api';
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 
-const OPEN_DATA_KEY=process.env.REACT_APP_OPEN_DATA_KEY
-const url=`http://openapi.seoul.go.kr:8088/${OPEN_DATA_KEY}/xml/GeoInfoOfRoadsideTreeW/1/5/%EC%A4%91%EA%B5%AC`
+const containerStyle = {
+    width: "100%",
+    height: "80vh"
+  };
+  
+  const center = {
+    lat: 37.5627216,
+    lng: 126.9983663
+  };
 
 const Map = () => {
+
+    let navigate=useNavigate()
+   
+    const [openData,setOpenData]=useState([])
+    const [choose,setChoose]=useState({
+      lat:'',
+      lng:''
+    })
+    const [treesTaken,setTreesTaken]=useState([])
     
-
-    const getLocation=async()=>{
-        const data=await axios.get(url)
-        console.log(data)
-
+    const getOpenData= ()=>{
+        axios.get(`https://us-central1-garosero-70ff7.cloudfunctions.net/apicall`)
+        .then(res=>{
+          setOpenData([
+            ...res.data.GeoInfoOfRoadsideTreeW.row
+          ])
+        }).catch(err=>{
+          throw new Error(err.response)
+        })
+    
     }
-    useEffect(()=>{
-        getLocation()
 
+    const getTreesTaken=async ()=>{
+      try{
+        const trees=await axios.get('https://garosero-70ff7-default-rtdb.firebaseio.com/Trees_taken.json')
+        setTreesTaken([
+          ...Object.values(trees.data)
+        ])
+
+      }catch(err){
+        throw new Error(err.response)
+      }
+    }
+    const filterOpenData=()=>{
+      //console.log(treesTaken[0].tree_id)
+      // const result=openData.filter(d=>{
+      //   console.log(treesTaken[0].tree_id)
+      // })
+      let lst=[...openData]
+      for(let i=0;i<treesTaken.length;i++){
+        const result=lst.filter(d=>treesTaken[i].tree_id!==d.TRE_IDN)
+        lst=[...result]
+        //console.log(result)
+      }
+      //console.log(lst)
+      setOpenData(prev=>[...prev])
+      //console.log(openData)
+      // console.log(result)
+      // return result
+    }
+    const filterChooseData=(choose)=>{
+      const {lat,lng}=choose
+      const result=openData.filter(d=>d.LAT===lat.toString() && d.LNG===lng.toString())
+      return result[0].TRE_IDN
+    }
+
+    const onClickMarker=(e)=>{
+      console.log(e.latLng.lat(),e.latLng.lng())
+      setChoose(prev=>{
+        prev.lat=e.latLng.lat()
+        prev.lng=e.latLng.lng()
+        return prev
+      })
+      const tree=filterChooseData(choose)
+      //setTreeId(filterData(choose))
+      navigate('/form',{state:tree})
+    }
+    
+    useEffect(()=>{
+        getOpenData()
+        //console.log(openData)
+        getTreesTaken()
+        //console.log(treesTaken)
+        //filterOpenData()
+        //console.log('filter:',openData)
     },[])
 
-   //const navermaps=window.naver.maps;
-    return (
-        <RenderAfterNavermapsLoaded 
-        ncpClientId={process.env.REACT_APP_NAVER_CLIENT_KEY} // 자신의 네이버 계정에서 발급받은 Client ID
-        error={<p>Maps Load Error</p>}
-        loading={<p>Maps Loading...</p>}>
-            
-            <NaverMap
-                mapDivId={'maps-getting-started-uncontrolled'} // default: react-naver-map
-                style={{
-                    width: '100%', // 네이버지도 가로 길이
-                    height: '85vh' // 네이버지도 세로 길이
-                }}
-                defaultCenter={{ lat: 37.554722, lng: 126.970833 }} // 지도 초기 위치
-                defaultZoom={13} // 지도 초기 확대 배율
-            >
-                {/* <Marker
-                    key={1}
-                    position={new navermaps.LatLng(37.551229, 126.988205)}
-                /> */}
-                
-                
-            </NaverMap>
-      </RenderAfterNavermapsLoaded>
 
+    return (
+        <> 
+        <div>
+          <select>
+            <option>강남구</option>
+            <option>강동구</option>
+            <option>강북구</option>
+            <option>강서구</option>
+            <option>관악구</option>
+            <option>광진구</option>
+            <option>구로구</option>
+            <option>금천구</option>
+            <option>노원구</option>
+            <option>도봉구</option>
+            <option>동대문구</option>
+            <option>동작구</option>
+            <option>마포구</option>
+            <option>서대문구</option>
+            <option>서초구</option>
+            <option>성동구</option>
+            <option>성북구</option>
+            <option>송파구</option>
+            <option>양천구</option>
+            <option>영등포구</option>
+            <option>용산구</option>
+            <option>은평구</option>
+            <option>중구</option>
+            <option>중랑구</option>
+          </select>
+        </div>
+        <LoadScript
+        googleMapsApiKey={process.env.REACT_APP_GOOGLE_API_KEY}
+      >
+        <GoogleMap
+          mapContainerStyle={containerStyle}
+          center={center}
+          zoom={17}
+        >
+
+          {
+            openData?.map(d=><Marker key={d.TRE_IDN} position={{lat:Number(d.LAT),lng:Number(d.LNG)}} onClick={onClickMarker}/>)
+          }
+          {/* https://developers.google.com/maps/documentation/javascript/examples/full/images/parking_lot_maps.png */}
+          {/* https://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png */}
+          {
+            treesTaken?.map(tree=><Marker icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/parking_lot_maps.png" key={tree.tree_id} position={{lat:tree.lat,lng:tree.lng}} />)
+          }
+          
+        </GoogleMap>
+      </LoadScript>
+      </>
 
     );
 };

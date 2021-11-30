@@ -109,3 +109,14 @@ export const Subtitle=styled.div`
         margin-left: 5%;
     }
 `
+
+export const Input=styled.input`
+    display: block;
+    width: 80%;
+    border:none;
+    border-bottom: 2px solid #45614B;
+    height: 10%;
+    outline: none;
+    margin:0 10%;
+    margin-top:10%
+`
