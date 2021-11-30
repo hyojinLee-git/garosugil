@@ -1,4 +1,4 @@
-import React, {  useState } from 'react';
+import React, {  useEffect, useState } from 'react';
 import axios from 'axios'
 import { Input } from '../style/style';
 import { Link ,useLocation} from 'react-router-dom';
@@ -52,6 +52,9 @@ const Form = () => {
         })
         
     }
+    const showAlert=()=>{
+        alert('clicked!')
+    }
     return (
         <>
             <header>
@@ -68,6 +71,7 @@ const Form = () => {
 
             </form>
             {submitSuccess&&<div>전송 성공</div>}
+            <button onClick={showAlert}>alert</button>
             </main>
         </>
     );
