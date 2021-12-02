@@ -98,8 +98,8 @@ const Form = () => {
                     <Input style={{cursor:"pointer", width:"100%",marginLeft:0}} type="text" disabled value={tree.tree_id} name="treeId" placeholder="지도보러가기"/>
                 </Link>
 
-                {submitSuccess&&<div style={{marginTop:"5%", color:"green"}}>신청 성공</div>}
-                <button type="submit" style={{height:40, fontSize:20,width:"80%", background:"linear-gradient(90deg, #44AB9A, #73DC97)",border:"none",outline:"none", color:'white',borderRadius:10,marginTop:"5%"}}>신청하기</button>
+                {submitSuccess&&<div style={{marginTop:"10%", color:"green"}}>신청 성공</div>}
+                <button type="submit" style={{height:40, fontSize:20,width:"80%", background:"linear-gradient(90deg, #44AB9A, #73DC97)",border:"none",outline:"none", color:'white',borderRadius:10,marginTop:"10%"}}>신청하기</button>
                 
 
             </form>

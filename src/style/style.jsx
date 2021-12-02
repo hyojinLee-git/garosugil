@@ -118,5 +118,6 @@ export const Input=styled.input`
     height: 10%;
     outline: none;
     margin:0 10%;
+    font-size:1rem;
     margin-top:10%
 `

@@ -71,8 +71,8 @@ const Map = () => {
   },[location])
     return (
         <> 
-        <div style={{height:"10vh",display:"flex",justifyContent:"center", alignItems:"center" }}>
-          <select onChange={onChangeLocation} value={location} style={{width:"100%",height:"40%",border:"none", borderBottom:"2px solid #45614B", outline:"none", padding:10}}>
+        <div style={{height:"20vh",maxHeight:"90px",display:"flex",justifyContent:"center", alignItems:"center" }}>
+          <select onChange={onChangeLocation} value={location} style={{width:"100%",height:"50%",border:"none", borderBottom:"2px solid #45614B", outline:"none", padding:10,background:"white",fontSize:"1rem"}}>
             {
               locationList.map(loc=>(
                 <option key={loc} value={loc}>{loc}</option>
