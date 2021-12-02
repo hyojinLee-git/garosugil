@@ -118,5 +118,5 @@ export const Input=styled.input`
     height: 10%;
     outline: none;
     margin:0 10%;
-    margin-bottom:10%
+    margin-top:10%
 `

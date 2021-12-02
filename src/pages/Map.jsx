@@ -71,8 +71,8 @@ const Map = () => {
   },[location])
     return (
         <> 
-        <div>
-          <select onChange={onChangeLocation} value={location}>
+        <div style={{height:"10vh",display:"flex",justifyContent:"center", alignItems:"center" }}>
+          <select onChange={onChangeLocation} value={location} style={{width:"100%",height:"40%",border:"none", borderBottom:"2px solid #45614B", outline:"none", padding:10}}>
             {
               locationList.map(loc=>(
                 <option key={loc} value={loc}>{loc}</option>
@@ -86,7 +86,7 @@ const Map = () => {
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={center}
-          zoom={15}
+          zoom={13}
         >
 
           {

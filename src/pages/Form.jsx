@@ -1,6 +1,6 @@
 import React, {   useEffect, useState } from 'react';
 import axios from 'axios'
-import { Input } from '../style/style';
+import { Button, Input } from '../style/style';
 import { Link,useLocation } from 'react-router-dom';
 import {useCookies} from 'react-cookie'
 
@@ -86,24 +86,24 @@ const Form = () => {
     
     return (
         <>
-            {cookies['login']}
             <header>
-                <h1>나무 돌보미 신청</h1>
+                <h1 style={{margin:"5%"}}>나무 돌보미 신청</h1>
             </header>
             <main>
-            <form onSubmit={onSubmit} style={{display:"flex",flexDirection:"column"}}> 
+            <form onSubmit={onSubmit} style={{display:"flex",flexDirection:"column", alignItems:"center"}}> 
                 <Input type="text" onChange={onChange} value={values.name} name="name" placeholder="이름"/>
                 <Input type="tel" onChange={onChange} value={values.phoneNumber} name="phoneNumber" placeholder="연락처"/>
                 
-                <Link to="/map" style={{textDecoration:"none", color:"gray"}}>
-                    <Input style={{cursor:"pointer"}} type="text" disabled value={tree.tree_id} name="treeId" placeholder="지도보러가기"/>
+                <Link to="/map" style={{textDecoration:"none", color:"gray", width:"80%"}}>
+                    <Input style={{cursor:"pointer", width:"100%",marginLeft:0}} type="text" disabled value={tree.tree_id} name="treeId" placeholder="지도보러가기"/>
                 </Link>
 
-
-                <button type="submit">보내기</button>
+                {submitSuccess&&<div style={{marginTop:"5%", color:"green"}}>신청 성공</div>}
+                <button type="submit" style={{height:40, fontSize:20,width:"80%", background:"linear-gradient(90deg, #44AB9A, #73DC97)",border:"none",outline:"none", color:'white',borderRadius:10,marginTop:"5%"}}>신청하기</button>
+                
 
             </form>
-            {submitSuccess&&<div>전송 성공</div>}
+            
             </main>
         </>
     );
