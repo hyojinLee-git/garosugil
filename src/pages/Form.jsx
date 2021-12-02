@@ -57,7 +57,7 @@ const Form = () => {
             setMyCookie(cookies.get('login'))
         }
         
-    },[])
+    },[cookies,state,tree])
     const onSubmit= (e)=>{
         e.preventDefault()
         //console.log('전송')
