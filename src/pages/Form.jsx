@@ -6,7 +6,7 @@ import {useCookies} from 'react-cookie'
 
 
 const Form = () => {
-    const {state}=useLocation()
+    //const {state}=useLocation()
     const [cookies]=useCookies(['login'])
     const [submitSuccess,setSubmitSuccess]=useState(false)
     const [values,setValues]=useState({
@@ -52,6 +52,7 @@ const Form = () => {
         //     }))
         // }
         // console.log(tree)
+        
         console.log(cookies['login'])
         
         
