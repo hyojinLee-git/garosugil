@@ -1,7 +1,7 @@
 import React, {   useEffect, useState } from 'react';
 import axios from 'axios'
 import { Input } from '../style/style';
-import { Link ,useLocation} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {useCookies} from 'react-cookie'
 
 
