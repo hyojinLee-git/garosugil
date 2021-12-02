@@ -33,7 +33,7 @@ const Map = () => {
     }
     
     //공공데이터 요청
-    const getOpenData= ()=>{
+    const getOpenData= (location)=>{
         axios.get(`https://us-central1-garosero-70ff7.cloudfunctions.net/apicall?location=${location}`)
         .then(res=>{
           setOpenData([
@@ -99,9 +99,9 @@ const Map = () => {
     useEffect(()=>{
 
         //공공데이터 요청
-        getOpenData()
+        getOpenData(location)
         //등록된 나무 데이터 요청
-        //getTreesTaken()
+        getTreesTaken()
     },[location])
 
 
