@@ -25,7 +25,7 @@ const Map = () => {
       lng:''
     })
     const [location,setLocation]=useState('강남구')
-    const [treesTaken,setTreesTaken]=useState([])
+    //const [treesTaken,setTreesTaken]=useState([])
     
     //위치 선택(영등포구 버그)
     const onChangeLocation=(e)=>{
@@ -46,17 +46,17 @@ const Map = () => {
     }
 
     //신청한 나무 데이터 요청
-    const getTreesTaken=async ()=>{
-      try{
-        const trees=await axios.get('https://garosero-70ff7-default-rtdb.firebaseio.com/Trees_taken.json')
-        setTreesTaken([
-          ...Object.values(trees.data)
-        ])
+    // const getTreesTaken=async ()=>{
+    //   try{
+    //     const trees=await axios.get('https://garosero-70ff7-default-rtdb.firebaseio.com/Trees_taken.json')
+    //     setTreesTaken([
+    //       ...Object.values(trees.data)
+    //     ])
 
-      }catch(err){
-        throw new Error(err.response)
-      }
-    }
+    //   }catch(err){
+    //     throw new Error(err.response)
+    //   }
+    // }
     // const filterOpenData=()=>{
     //   //console.log(treesTaken[0].tree_id)
     //   // const result=openData.filter(d=>{
@@ -101,7 +101,7 @@ const Map = () => {
         //공공데이터 요청
         getOpenData(location)
         //등록된 나무 데이터 요청
-        getTreesTaken()
+        //getTreesTaken()
     },[location])
 
 
@@ -130,9 +130,9 @@ const Map = () => {
           }
           {/* https://developers.google.com/maps/documentation/javascript/examples/full/images/parking_lot_maps.png */}
           {/* https://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png */}
-          {
+          {/* {
             treesTaken?.map(tree=><Marker icon="https://developers.google.com/maps/documentation/javascript/examples/full/images/parking_lot_maps.png" key={tree.tree_id} position={{lat:tree.lat,lng:tree.lng}} />)
-          }
+          } */}
           
         </GoogleMap>
       </LoadScript>

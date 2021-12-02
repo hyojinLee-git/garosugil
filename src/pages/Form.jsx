@@ -38,24 +38,24 @@ const Form = () => {
         })
     }
     useEffect(()=>{
-        if (state){
-            console.log(state)
+        // if (state){
+        //     console.log(state)
 
-            setTree(prev=>({
-                ...prev,
-                tree_id:state.TRE_IDN,
-                tree_name:state.TRE_IDN,
-                kind:state.WDPT_NM,
-                road:state.WIDTH_NM,
-                lat:state.LAT,
-                lng:state.LNG
-            }))
-        }
-        console.log(tree)
+        //     setTree(prev=>({
+        //         ...prev,
+        //         tree_id:state.TRE_IDN,
+        //         tree_name:state.TRE_IDN,
+        //         kind:state.WDPT_NM,
+        //         road:state.WIDTH_NM,
+        //         lat:state.LAT,
+        //         lng:state.LNG
+        //     }))
+        // }
+        // console.log(tree)
         console.log(cookies['login'])
         
         
-    },[cookies,state,tree])
+    },[cookies])
     const onSubmit= (e)=>{
         e.preventDefault()
         if(!values.name) return
