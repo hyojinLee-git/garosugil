@@ -1,6 +1,6 @@
 import React, {   useEffect, useState } from 'react';
 import axios from 'axios'
-import { Button, Input } from '../style/style';
+import { Input } from '../style/style';
 import { Link,useLocation } from 'react-router-dom';
 import {useCookies} from 'react-cookie'
 
