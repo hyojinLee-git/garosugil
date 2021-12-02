@@ -2,12 +2,12 @@ import React, {   useEffect, useState } from 'react';
 import axios from 'axios'
 import { Input } from '../style/style';
 import { Link ,useLocation} from 'react-router-dom';
-import {Cookies} from 'react-cookie'
+import {useCookies} from 'react-cookie'
 
 
 const Form = () => {
     const {state}=useLocation()
-    const cookies=new Cookies()
+    const [cookies]=useCookies(['login'])
     const [submitSuccess,setSubmitSuccess]=useState(false)
     const [values,setValues]=useState({
         name:'',
@@ -29,7 +29,6 @@ const Form = () => {
         xp:0
     }
     const [tree,setTree]=useState(initialTree)
-    const [myCookie,setMyCookie]=useState('')
 
     const onChange=(e)=>{
         const {name, value}=e.target;
@@ -53,15 +52,12 @@ const Form = () => {
             }))
         }
         console.log(tree)
-        if(cookies.get('login')){
-            setMyCookie(cookies.get('login'))
-        }
+        console.log(cookies['login'])
+        
         
     },[cookies,state,tree])
     const onSubmit= (e)=>{
         e.preventDefault()
-        //console.log('전송')
-        //console.log(values)
         if(!values.name) return
 
         axios.post('https://garosero-70ff7-default-rtdb.firebaseio.com/Trees_taken.json',tree)
@@ -81,7 +77,7 @@ const Form = () => {
     
     return (
         <>
-        {myCookie}
+            {cookies['login']}
             <header>
                 <h1>나무 돌보미 신청</h1>
             </header>
