@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
 import CaretreeIntroduce from './pages/CaretreeIntroduce';
 import DataVisualization from './pages/DataVisualization';
 import Ginkgo from './pages/Ginkgo';

@@ -1,31 +1,35 @@
-import React, {   useState } from 'react';
+import React, {   useEffect, useState } from 'react';
 import axios from 'axios'
 import { Input } from '../style/style';
 import { Link ,useLocation} from 'react-router-dom';
-
+import {Cookies} from 'react-cookie'
 
 
 const Form = () => {
     const {state}=useLocation()
+    const cookies=new Cookies()
     const [submitSuccess,setSubmitSuccess]=useState(false)
     const [values,setValues]=useState({
         name:'',
         phoneNumber:'',
-        treeId:state
+        treeId:''
     })
     const initialTree={
         district:'',
         end_data:'',
+        kind:'',
+        lat:'',
+        lng:'',
         level:1,
         road:"",
         start_data:'',
-        tree_id:state,
-        tree_name:state,
+        tree_id:'',
+        tree_name:'',
         uid:'',
         xp:0
     }
     const [tree,setTree]=useState(initialTree)
-
+    const [myCookie,setMyCookie]=useState('')
 
     const onChange=(e)=>{
         const {name, value}=e.target;
@@ -33,12 +37,33 @@ const Form = () => {
             ...values,
             [name]:value
         })
-
     }
+    useEffect(()=>{
+        if (state){
+            console.log(state)
+
+            setTree(prev=>({
+                ...prev,
+                tree_id:state.TRE_IDN,
+                tree_name:state.TRE_IDN,
+                kind:state.WDPT_NM,
+                road:state.WIDTH_NM,
+                lat:state.LAT,
+                lng:state.LNG
+            }))
+        }
+        console.log(tree)
+        if(cookies.get('login')){
+            setMyCookie(cookies.get('login'))
+        }
+        
+    },[])
     const onSubmit= (e)=>{
         e.preventDefault()
         //console.log('전송')
         //console.log(values)
+        if(!values.name) return
+
         axios.post('https://garosero-70ff7-default-rtdb.firebaseio.com/Trees_taken.json',tree)
         .then(res=>{
             if(res.status!==200){
@@ -52,11 +77,11 @@ const Form = () => {
         })
         
     }
-    const showAlert=()=>{
-        alert('clicked!')
-    }
+
+    
     return (
         <>
+        {myCookie}
             <header>
                 <h1>나무 돌보미 신청</h1>
             </header>
@@ -71,7 +96,6 @@ const Form = () => {
 
             </form>
             {submitSuccess&&<div>전송 성공</div>}
-            <button onClick={showAlert}>alert</button>
             </main>
         </>
     );

@@ -16,16 +16,25 @@ const containerStyle = {
 const Map = () => {
 
     let navigate=useNavigate()
+
+    const locationList=["강남구", "강동구", "강북구", "강서구", "관악구", "광진구", "구로구", "금천구", "노원구", "도봉구", "동대문구", "동작구", "마포구", "서대문구", "서초구", "성동구", "성북구", "송파구", "양천구", "영등포구", "용산구", "은평구", "중구", "중랑구"]
    
     const [openData,setOpenData]=useState([])
     const [choose,setChoose]=useState({
       lat:'',
       lng:''
     })
+    const [location,setLocation]=useState('강남구')
     const [treesTaken,setTreesTaken]=useState([])
     
+    //위치 선택(영등포구 버그)
+    const onChangeLocation=(e)=>{
+      setLocation(e.target.value)
+    }
+    
+    //공공데이터 요청
     const getOpenData= ()=>{
-        axios.get(`https://us-central1-garosero-70ff7.cloudfunctions.net/apicall`)
+        axios.get(`https://us-central1-garosero-70ff7.cloudfunctions.net/apicall?location=${location}`)
         .then(res=>{
           setOpenData([
             ...res.data.GeoInfoOfRoadsideTreeW.row
@@ -33,9 +42,10 @@ const Map = () => {
         }).catch(err=>{
           throw new Error(err.response)
         })
-    
+        
     }
 
+    //신청한 나무 데이터 요청
     const getTreesTaken=async ()=>{
       try{
         const trees=await axios.get('https://garosero-70ff7-default-rtdb.firebaseio.com/Trees_taken.json')
@@ -64,12 +74,16 @@ const Map = () => {
     //   // console.log(result)
     //   // return result
     // }
+
+    //클릭한 나무
     const filterChooseData=(choose)=>{
       const {lat,lng}=choose
       const result=openData.filter(d=>d.LAT===lat.toString() && d.LNG===lng.toString())
-      return result[0].TRE_IDN
+      console.log(result)
+      return result[0]
     }
 
+    //나무 클릭시 form으로 이동
     const onClickMarker=(e)=>{
       console.log(e.latLng.lat(),e.latLng.lng())
       setChoose(prev=>{
@@ -77,49 +91,29 @@ const Map = () => {
         prev.lng=e.latLng.lng()
         return prev
       })
-      const tree=filterChooseData(choose)
+      const treeInfo=filterChooseData(choose)
       //setTreeId(filterData(choose))
-      navigate('/form',{state:tree})
+      navigate('/form',{state:treeInfo})
     }
     
     useEffect(()=>{
+
+        //공공데이터 요청
         getOpenData()
-        //console.log(openData)
-        getTreesTaken()
-        //console.log(treesTaken)
-        //filterOpenData()
-        //console.log('filter:',openData)
-    },[])
+        //등록된 나무 데이터 요청
+        //getTreesTaken()
+    },[location])
 
 
     return (
         <> 
         <div>
-          <select>
-            <option>강남구</option>
-            <option>강동구</option>
-            <option>강북구</option>
-            <option>강서구</option>
-            <option>관악구</option>
-            <option>광진구</option>
-            <option>구로구</option>
-            <option>금천구</option>
-            <option>노원구</option>
-            <option>도봉구</option>
-            <option>동대문구</option>
-            <option>동작구</option>
-            <option>마포구</option>
-            <option>서대문구</option>
-            <option>서초구</option>
-            <option>성동구</option>
-            <option>성북구</option>
-            <option>송파구</option>
-            <option>양천구</option>
-            <option>영등포구</option>
-            <option>용산구</option>
-            <option>은평구</option>
-            <option>중구</option>
-            <option>중랑구</option>
+          <select onChange={onChangeLocation} value={location}>
+            {
+              locationList.map(loc=>(
+                <option key={loc} value={loc}>{loc}</option>
+              ))
+            }
           </select>
         </div>
         <LoadScript
