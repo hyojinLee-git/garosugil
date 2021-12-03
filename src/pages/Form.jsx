@@ -12,7 +12,7 @@ const Form = () => {
     const [values,setValues]=useState({
         name:'',
         phoneNumber:'',
-        unit:'개인'
+        division:'개인'
     })
     
     const initialTree={
@@ -21,7 +21,6 @@ const Form = () => {
         kind:'',
         lat:'',
         lng:'',
-        level:1,
         road:'',
         start_date:'',
         tree_id:'',
@@ -77,7 +76,8 @@ const Form = () => {
             setSubmitSuccess(true)
             setValues({
                 name:'',
-                phoneNumber:''
+                phoneNumber:'',
+                division:'개인'
             })
         })
         .catch(err=>{
@@ -97,13 +97,13 @@ const Form = () => {
             <form onSubmit={onSubmit} style={{display:"flex",flexDirection:"column", margin:"20px"}}> 
                 <div style={{display:"flex", flexDirection:"column"}}>
                     <Label>개인
-                    <input type="radio" name="unit" value="개인" checked={values.unit==="개인"} onChange={onChange}/>
+                    <input type="radio" name="division" value="개인" checked={values.division==="개인"} onChange={onChange}/>
                     </Label>
                     <Label>단체
-                    <input type="radio" name="unit" value="단체" checked={values.unit==="단체"} onChange={onChange}/>
+                    <input type="radio" name="division" value="단체" checked={values.division==="단체"} onChange={onChange}/>
                     </Label>
                     <Label>학교
-                    <input type="radio" name="unit" value="학교" checked={values.unit==="학교"} onChange={onChange}/>
+                    <input type="radio" name="division" value="학교" checked={values.division==="학교"} onChange={onChange}/>
                     </Label>
                 </div>
                 <div style={{width:"100%",display:"flex",flexDirection:"column"}}>
