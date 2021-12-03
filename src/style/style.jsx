@@ -109,6 +109,9 @@ export const Subtitle=styled.div`
         margin-left: 5%;
     }
 `
+export const Label=styled.label`
+    margin-bottom:10px;
+`
 
 export const Input=styled.input`
     display: block;
@@ -121,3 +124,4 @@ export const Input=styled.input`
     font-size:1rem;
     margin-top:10%
 `
+

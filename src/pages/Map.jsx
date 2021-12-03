@@ -17,7 +17,7 @@ const Map = () => {
 
     let navigate=useNavigate()
 
-    const locationList=["강남구", "강동구", "강북구", "강서구", "관악구", "광진구", "구로구", "금천구", "노원구", "도봉구", "동대문구", "동작구", "마포구", "서대문구", "서초구", "성동구", "성북구", "송파구", "양천구", "영등포구", "용산구", "은평구", "중구", "중랑구"]
+    const locationList=["강남구", "강동구", "강북구", "강서구", "관악구", "광진구", "구로구", "금천구", "노원구", "도봉구", "동대문구", "동작구", "마포구", "서대문구", "서초구", "성동구", "성북구", "송파구", "양천구","영등포구", "용산구", "은평구", "중구", "중랑구"]
     const [openData,setOpenData]=useState([])
     const [location,setLocation]=useState('강남구')
     const [treesTaken,setTreesTaken]=useState([])
@@ -31,7 +31,6 @@ const Map = () => {
     const filterChooseData=(choose)=>{
       const {lat,lng}=choose
       const result=openData.filter(d=>d.LAT===lat.toString() && d.LNG===lng.toString())
-      console.log(result)
       return result[0]
     }
 
@@ -62,6 +61,7 @@ const Map = () => {
         }
         setTreesTaken([...data1])
         setOpenData([...data2])
+
       })
     )
     .catch(err=>{
@@ -90,7 +90,7 @@ const Map = () => {
         >
 
           {
-            openData?.map(d=><Marker key={d.TRE_IDN} position={{lat:Number(d.LAT),lng:Number(d.LNG)}} onClick={onClickMarker}/>)
+            openData?.map(d=><Marker key={d.OBJECTID} position={{lat:Number(d.LAT),lng:Number(d.LNG)}} onClick={onClickMarker}/>)
           }
 
           {

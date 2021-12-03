@@ -1,6 +1,6 @@
 import React, {   useEffect, useState } from 'react';
 import axios from 'axios'
-import { Input } from '../style/style';
+import { Input, Label } from '../style/style';
 import { Link,useLocation } from 'react-router-dom';
 import {useCookies} from 'react-cookie'
 
@@ -12,6 +12,7 @@ const Form = () => {
     const [values,setValues]=useState({
         name:'',
         phoneNumber:'',
+        unit:'개인'
     })
     
     const initialTree={
@@ -25,7 +26,7 @@ const Form = () => {
         start_date:'',
         tree_id:'',
         tree_name:'',
-        uid:cookies,
+        uid:'',
         xp:0
     }
     const [tree,setTree]=useState(initialTree)
@@ -42,6 +43,7 @@ const Form = () => {
         const year=today.getFullYear()
         const month=today.getMonth()+1;
         const date=today.getDate()
+
         if (state){
             setTree(prev=>({
                 ...prev,
@@ -64,6 +66,7 @@ const Form = () => {
         if(!values.name) return
         if(!values.phoneNumber) return
         if(!tree.tree_id) return
+        if(!tree.uid) return
 
         axios.post('https://garosero-70ff7-default-rtdb.firebaseio.com/Trees_taken.json',tree)
         .then(res=>{
@@ -90,16 +93,31 @@ const Form = () => {
                 <h1 style={{margin:"5%"}}>나무 돌보미 신청</h1>
             </header>
             <main>
-            <form onSubmit={onSubmit} style={{display:"flex",flexDirection:"column", alignItems:"center"}}> 
-                <Input type="text" onChange={onChange} value={values.name} name="name" placeholder="이름"/>
-                <Input type="tel" onChange={onChange} value={values.phoneNumber} name="phoneNumber" placeholder="연락처"/>
-                
-                <Link to="/map" style={{textDecoration:"none", color:"gray", width:"80%"}}>
-                    <Input style={{cursor:"pointer", width:"100%",marginLeft:0}} type="text" disabled value={tree.tree_id} name="treeId" placeholder="지도보러가기"/>
+
+            <form onSubmit={onSubmit} style={{display:"flex",flexDirection:"column", margin:"20px"}}> 
+                <div style={{display:"flex", flexDirection:"column"}}>
+                    <Label>개인
+                    <input type="radio" name="unit" value="개인" checked={values.unit==="개인"} onChange={onChange}/>
+                    </Label>
+                    <Label>단체
+                    <input type="radio" name="unit" value="단체" checked={values.unit==="단체"} onChange={onChange}/>
+                    </Label>
+                    <Label>학교
+                    <input type="radio" name="unit" value="학교" checked={values.unit==="학교"} onChange={onChange}/>
+                    </Label>
+                </div>
+                <div style={{width:"100%",display:"flex",flexDirection:"column"}}>
+                <Link to="/map" style={{textDecoration:"none", color:"gray", width:"100%"}}>
+                    <Input style={{cursor:"pointer", width:"100%",marginLeft:0}} type="text" disabled value={tree.tree_id} name="treeId" placeholder="나무 선택하러 가기"/>
                 </Link>
+                <Input type="text" style={{marginLeft:0, width:"100%"}} onChange={onChange} value={values.name} name="name" placeholder="이름"/>
+                <Input type="tel" style={{marginLeft:0, width:"100%"}} onChange={onChange} value={values.phoneNumber} name="phoneNumber" placeholder="연락처"/>
+                
+                
+                </div>
 
                 {submitSuccess&&<div style={{marginTop:"10%", color:"green"}}>신청 성공</div>}
-                <button type="submit" style={{height:40, fontSize:20,width:"80%", background:"linear-gradient(90deg, #44AB9A, #73DC97)",border:"none",outline:"none", color:'white',borderRadius:10,marginTop:"10%"}}>신청하기</button>
+                <button type="submit" style={{height:40, fontSize:20, background:"linear-gradient(90deg, #44AB9A, #73DC97)",border:"none",outline:"none", color:'white',borderRadius:10,marginTop:"10%"}}>신청하기</button>
                 
 
             </form>

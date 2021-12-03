@@ -15,6 +15,7 @@ import Map from './pages/Map';
 import loadable from '@loadable/component';
 import Form from './pages/Form';
 import Googlemap from './pages/Googlemap';
+//import ApricotTree from './pages/ApricotTree';
 
 const ApricotTree = loadable(() => import('./pages/ApricotTree'));
 
@@ -31,7 +32,7 @@ function App() {
           <Route path="/datavisualization/linegraph" element={<LineGraph />} />
           <Route path="/datavisualization/doughnut" element={<Doughnut />} />
           {/* 살구나무 */}
-          <Route path="/apricottree" element={ApricotTree} />
+          <Route path="/apricottree" element={<ApricotTree />} />
           {/* 은행나무 */}
           <Route path="/ginkgo" element={<Ginkgo />} />
           {/* 왕벚나무 */}
