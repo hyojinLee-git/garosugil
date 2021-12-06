@@ -90,7 +90,7 @@ const Form = () => {
     return (
         <>
             <header>
-                <h1 style={{margin:"5%"}}>나무 돌보미 신청</h1>
+                <h1 style={{margin:"10% 5% 5% 5%"}}>나무 돌보미 신청</h1>
             </header>
             <main>
 

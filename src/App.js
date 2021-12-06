@@ -14,7 +14,6 @@ import './App.css';
 import Map from './pages/Map';
 import loadable from '@loadable/component';
 import Form from './pages/Form';
-import Googlemap from './pages/Googlemap';
 //import ApricotTree from './pages/ApricotTree';
 
 const ApricotTree = loadable(() => import('./pages/ApricotTree'));
@@ -24,7 +23,6 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/googlemap" element={<Googlemap />} />
           <Route path="/form" element={<Form />} />
           <Route path="/map" element={<Map />} />
           <Route path="/caretreeintroduce" element={<CaretreeIntroduce />} />

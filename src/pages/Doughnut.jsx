@@ -37,15 +37,15 @@ const Doughnut = () => {
     return (
         <div>
             <Header color="#B5E9CA">
-                <img id="back" src="/icons/Backbutton.png" alt="back" onClick={()=>navigate(-1)}/>
+                <img id="back" src="/icons/Backbutton.png" alt="back" onClick={()=>navigate(-1)} style={{width:24, height:24}}/>
                 <h1 style={{color:"black"}}>
                 우리 동네에 가장 많은 
                 가로수는 무엇일까?
                 </h1>
                 <img src="/icons/donut-large.png" alt="donut"/>
             </Header>
-            <div style={{paddingLeft:"10%"}}>
-                <div style={{whiteSpace:"nowrap", margin:"10% 0",overflowX:"auto"}}>
+            <div style={{ padding:"3%"}}>
+                <div style={{whiteSpace:"nowrap", margin:"5% 0",overflowX:"auto"}}>
                 {
                     contents.map((content)=><Button color={nowTab===content.id? "#B5E9CA":null} key={content.id} onClick={onChangeTab}>{content.tab}</Button>)
                 }
