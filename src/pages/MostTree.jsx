@@ -16,7 +16,7 @@ const Chart = () => {
                 <img src="/icons/sort.png" alt="sort"/>
             </Header>
             <div style={{marginTop:"5%", padding:"3%"}}>
-                <img src="/images/가로수 수량 상위 10개 구.png" alt="chart" style={{display:"block",width:"100%"}}/>   
+                <img src="/images/상위5종 가로수 변동.png" alt="chart" style={{display:"block",width:"100%"}}/>   
             </div>
         </div>
     );

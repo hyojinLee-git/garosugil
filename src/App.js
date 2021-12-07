@@ -14,6 +14,7 @@ import './App.css';
 import Map from './pages/Map';
 import loadable from '@loadable/component';
 import Form from './pages/Form';
+import MostTree from './pages/MostTree';
 //import ApricotTree from './pages/ApricotTree';
 
 const ApricotTree = loadable(() => import('./pages/ApricotTree'));
@@ -27,6 +28,7 @@ function App() {
           <Route path="/map" element={<Map />} />
           <Route path="/caretreeintroduce" element={<CaretreeIntroduce />} />
           <Route path="/datavisualization/chart" element={<Chart />} />
+          <Route path="/datavisualization/mosttree" element={<MostTree />} />
           <Route path="/datavisualization/linegraph" element={<LineGraph />} />
           <Route path="/datavisualization/doughnut" element={<Doughnut />} />
           {/* 살구나무 */}

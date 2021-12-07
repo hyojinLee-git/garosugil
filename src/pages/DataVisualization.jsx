@@ -16,7 +16,7 @@ const contents=[
         logoImg:"/icons/sort.png",
         content:"가로수가 가장 많은 동네는 어디일까?",
         color:"#F0F2F5",
-        link:"/datavisualization/chart"
+        link:"/datavisualization/mosttree"
     },
     {
         id:3,
@@ -30,7 +30,7 @@ const contents=[
         logoImg:"/icons/sort-horizontal.png",
         content:"어떤 가로수가 늘어나고 있을까?",
         color:"#F0F2F5",
-        link:""
+        link:"/datavisualization/chart"
     },
 ]
 
