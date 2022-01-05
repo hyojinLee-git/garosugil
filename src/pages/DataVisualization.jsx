@@ -1,7 +1,7 @@
-
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import { StyledLi, Subtitle } from '../style/style';
+
 
 const contents=[
     {
@@ -35,9 +35,10 @@ const contents=[
 ]
 
 const DataVisualization = () => {
-    
+
     return (
         <>
+            
             <h1 style={{paddingLeft:15}}>가로수 데이터</h1>
             <div style={{display:"flex",flexDirection:"column",alignItems:"center"}}>
             <Subtitle>
@@ -59,7 +60,6 @@ const DataVisualization = () => {
                     </StyledLi>)
                 }
             </ul>
-            
         </>
     );
 };

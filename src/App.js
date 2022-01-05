@@ -10,11 +10,12 @@ import Zelkova from './pages/Zelkova';
 import Doughnut from './pages/Doughnut';
 import Chart from './pages/Chart';
 import LineGraph from './pages/LineGraph';
+import MostTree from './pages/MostTree';
 import './App.css';
 import Map from './pages/Map';
 import loadable from '@loadable/component';
 import Form from './pages/Form';
-import MostTree from './pages/MostTree';
+
 //import ApricotTree from './pages/ApricotTree';
 
 const ApricotTree = loadable(() => import('./pages/ApricotTree'));
@@ -24,13 +25,12 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
+          {/* 신청 */}
           <Route path="/form" element={<Form />} />
+          {/* 지도 */}
           <Route path="/map" element={<Map />} />
+          {/* 나무돌보미 설명 */}
           <Route path="/caretreeintroduce" element={<CaretreeIntroduce />} />
-          <Route path="/datavisualization/chart" element={<Chart />} />
-          <Route path="/datavisualization/mosttree" element={<MostTree />} />
-          <Route path="/datavisualization/linegraph" element={<LineGraph />} />
-          <Route path="/datavisualization/doughnut" element={<Doughnut />} />
           {/* 살구나무 */}
           <Route path="/apricottree" element={<ApricotTree />} />
           {/* 은행나무 */}
@@ -43,8 +43,14 @@ function App() {
           <Route path="/poplartree" element={<PoplarTree />} />
           {/* 느티나무 */}
           <Route path="/zelkova" element={<Zelkova />} />
-
-          <Route path="/datavisualization" element={<DataVisualization />} />
+          {/* 데이터 시각화 */}
+          <Route path="/datavisualization/*">
+            <Route path="" element={<DataVisualization />} />
+            <Route path="doughnut" element={<Doughnut />} />
+            <Route path="mosttree" element={<MostTree />} />
+            <Route path="linegraph" element={<LineGraph />} />
+            <Route path="chart" element={<Chart />} />
+          </Route>
         </Routes>
       </Router>
     </div>
