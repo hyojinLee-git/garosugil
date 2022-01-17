@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+![Component223](docs/logo.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# SEOUL GAROSU
 
-## Available Scripts
+## 서비스 개요
 
-In the project directory, you can run:
+나무 돌보미 사업 활성화를 위한 나만의 가로수 입양/관리 앱입니다.
 
-### `yarn start`
+![screenshot](docs/seoul_garosu_screenshot.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 사용 기술
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Front-end
 
-### `yarn test`
+- Android Studio
+- React
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Back-end
 
-### `yarn build`
+- Firebase
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Collaboration
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Github, Notion, Figma
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 서비스 플로우 차트
 
-### `yarn eject`
+![flowchart](docs/seoul_garosu_flowchart.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 기여한 부분
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- 나무돌보미 신청 페이지 제작
+- 나무 돌보미 사업 설명 및 나무 돌보기 팁 페이지 제작
+- 데이터 시각화 페이지 제작
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 수상
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+공공데이터 해커톤 서비스 개발 부문 대상 수상
 
-## Learn More
+![prize](docs/seoul_garosu_prize.jpg)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 기술적으로 어려웠던 점
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- 팀의 주제상 웹보다는 앱으로 구현하는 것이 더 낫다고 판단되었습니다. 따라서 개발에 기여하기 위해 리액트를 이용해 필요한 페이지를 개발,배포하고 웹뷰를 이용해 안드로이드 앱에 링크를 넣기로 하였습니다.
 
-### Code Splitting
+- 나무 돌보미 신청 페이지를 제작하며 유저 정보는 앱에 있고 서버에 신청하는 로직은 웹에 있었습니다. 따라서 유저 정보를 웹으로 전달하는 과정이 필요했습니다. 안드로이드 스튜디오의 CookieManager을 통해 신청페이지에 유저 정보가 담긴 쿠키를 세팅함으로써 이 문제를 해결하였습니다.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- 공공데이터를 이용해 현재 존재하고 있는 가로수 정보를 지도api에 마커표시를 해야 했는데 공공데이터 요청 프로토콜이 http를 사용하고 있었습니다. 따라서 firebase function을 이용하여 서버에서 데이터를 요청하고 그것을 브라우저에서 요청하는 방식으로 문제를 해결하였습니다.
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- firebase와 netlify의 출처(origin)이 달라 cors이슈가 발생하였습니다. 따라서 cors라이브러리를 설치하여 문제를 해결하였습니다.

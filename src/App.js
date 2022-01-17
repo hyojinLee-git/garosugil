@@ -45,6 +45,7 @@ function App() {
           <Route path="/zelkova" element={<Zelkova />} />
           {/* 데이터 시각화 */}
           <Route path="/datavisualization/*">
+            {/* sub router */}
             <Route path="" element={<DataVisualization />} />
             <Route path="doughnut" element={<Doughnut />} />
             <Route path="mosttree" element={<MostTree />} />
