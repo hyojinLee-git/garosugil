@@ -37,7 +37,7 @@
 
 공공데이터 해커톤 서비스 개발 부문 대상 수상
 
-![prize](docs/seoul_garosu_prize.jpg)
+![prize](docs/seoul_garosu_prize.jpg|width=250)
 
 ## 기술적으로 어려웠던 점
 
