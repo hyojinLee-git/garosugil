@@ -37,7 +37,7 @@
 
 공공데이터 해커톤 서비스 개발 부문 대상 수상
 
-<img src="https://raw.githubusercontent.com/hyojinLee-git/garosugil/main/docs/seoul_garosu_prize.jpg" alt="prize" width="300">
+<img src="https://raw.githubusercontent.com/hyojinLee-git/garosugil/main/docs/seoul_garosu_prize.jpg" alt="prize" width="450">
 
 ## 기술적으로 어려웠던 점
 
